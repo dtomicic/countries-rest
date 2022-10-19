@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { SlMagnifier } from "react-icons/sl";
+import Card from '../components/Card';
 
 export default function Home({theme}) {
   return (
@@ -25,6 +26,9 @@ export default function Home({theme}) {
               <option value="oceania">Oceania</option>
             </select>
           </div>
+        </div>
+        <div className={styles.secondSection}>
+          <Card />
         </div>
     </div>
   )
