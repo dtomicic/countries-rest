@@ -1,9 +1,10 @@
-.mainSection {
+.firstSection {
     display: flex;
-    margin-top: 20px;
+    margin-top: 30px;
     justify-content: center;
     width: 100%;
     flex-direction: column;
+    padding: 0 15px 0 15px;
 }
 
 .searchSection {
@@ -11,10 +12,11 @@
     width: 100%;
     justify-content: center;
     align-items: center;
+    max-width: 578px;
 }
 
 .searchSectionInput {
-    width: 90%;
+    width: 100%;
     height: 50px;
     border-radius: 5px;
     border: none;
@@ -33,7 +35,7 @@
 
 .searchSectionIcon {
     position: absolute;
-    left: 50px;
+    left: 40px;
     opacity: .4;
 }
 
@@ -58,17 +60,52 @@
 .filterSection {
     display: flex;
     margin-top: 30px;
-    width: 100%;
-    padding-left: 20px;
-
+    width: 90%;
+    max-width: 578px;
+    justify-content: flex-start;
 }
 
+.filterSectionDropdown {
+    height: 50px;
+    width: 70%;
+    border: none;
+    padding: 0 15px;
+    font-family: 'Nunito Sans';
+    font-weight: 600;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 5px rgba(119, 119, 119, 0.1);
+    max-width: 250px;
+}
+
+.filterSectionDropdown:focus {
+    outline: none;
+}
+
+.filterSectionDropdownDark {
+    background-color: hsl(208, 24%, 33%);
+    color: white;
+}
 
 @media screen and (min-width: 768px) {
-    .searchSectionIcon {
-        position: absolute;
-        left: 70px;
-        opacity: .4;
+    .firstSection {
+        padding: 0px 45px;
     }
-    
+
+    .searchSectionIcon {
+        left: 70px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .firstSection {
+        padding: 0px 80px;
+    }
+
+    .searchSectionInput {
+        height: 60px;
+    }
+
+    .searchSectionIcon {
+        left: 110px;
+    }
 }
