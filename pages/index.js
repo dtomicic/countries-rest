@@ -13,16 +13,17 @@ export default function Home({theme}) {
       const res = await fetch('https://restcountries.com/v3.1/all');
       const data = await res.json();
       setCountries(data);
+      console.log(data);
     }catch (e) {
       console.log(e);
     }
   }
 
+
   useEffect(() => {
     callApi();
   }, [])
   
-  console.log(countries[0] && countries[0].flags.svg);
 
   return (
     <div>

@@ -1,0 +1,188 @@
+.country {
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px;
+    font-family: 'Nunito Sans';
+    margin-top: 40px;
+}
+
+.countryBack {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    width: 40%;
+    padding: 10px 25px 10px 25px;
+    margin-bottom: 70px;
+    max-width: 138px;
+    border-radius: 5px;
+    transition: ease-in-out .3s;
+}
+
+.countryBackDark {
+    background-color: hsl(209, 23%, 22%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
+}
+
+.countryBackLight {
+    background-color: hsl(0, 0%, 100%);
+    color: hsl(200, 15%, 8%);
+    box-shadow: 0px 0px 5px 5px rgba(102, 102, 102, 0.15);
+}
+
+.countryBackText {
+    margin: 0;
+    font-weight: 600;
+}
+
+.countryMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.countryMainLight {
+    color: hsl(200, 15%, 8%);
+}
+
+.countryMainDark {
+    color: hsl(0, 0%, 100%);
+}
+
+.countryMainImage {
+    width: 100%;
+}
+
+.countryMainText {
+    display: flex;
+    flex-direction: column;
+    margin-top: 45px;
+    width: 100%;
+}
+
+.countryMainTextHeaderName {
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.countryMainTextInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.countryMainTextInfoItem {
+    font-weight: 500;
+}
+
+.countryMainTextInfoBold {
+    font-weight: 700;
+}
+
+.countryMainTextBorder {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+
+.countryMainTextBorderHeader {
+    margin-bottom: 15px;
+}
+
+.countryMainTextBorderList {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.countryMainTextBorderBox {
+    padding: 5px 25px;
+}
+
+.countryMainTextBorderBoxDark {
+    background-color: hsl(209, 23%, 22%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
+}
+
+.countryMainTextBorderBoxLight {
+    background-color: hsl(0, 0%, 100%);
+    color: hsl(200, 15%, 8%);
+    box-shadow: 0px 0px 5px 5px rgba(102, 102, 102, 0.15);
+}
+
+.countryMainTextBorderBoxHeader {
+    margin: 0;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+@media screen and (min-width: 768px) {
+    .country {
+        padding: 0 45px;
+    }
+
+    .countryMainTextInfo {
+        flex-direction: row;
+        gap: 150px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .country {
+        padding: 0 80px;
+    }
+
+    .countryBack {
+        margin-bottom: 10px;
+    }
+
+    .countryMain {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+
+    .countryMainImage {
+        width: 100%;
+        max-width: 640px;
+        
+    }
+
+    .countryMainTextHeaderName {
+        margin: 0;
+        margin-bottom: 25px;
+    }
+
+    .countryMainText {
+        margin: 0;
+        padding-left: 20px;
+    }
+
+    .countryMainTextBorder {
+        margin-bottom: 0;
+    }
+
+    .countryMainTextInfo {
+        justify-content: space-between;
+    }
+
+    .countryMainTextInfoItem {
+        margin: 0;
+    }
+
+    .countryMainTextInfoFirst {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .countryMainTextInfoSecond {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
