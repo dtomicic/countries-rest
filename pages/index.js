@@ -2,8 +2,28 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { SlMagnifier } from "react-icons/sl";
 import Card from '../components/Card';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 export default function Home({theme}) {
+  const [countries, setCountries] = useState([])
+
+  const callApi = async () => {
+    try {
+      const res = await fetch('https://restcountries.com/v3.1/all');
+      const data = await res.json();
+      setCountries(data);
+    }catch (e) {
+      console.log(e);
+    }
+  }
+
+  useEffect(() => {
+    callApi();
+  }, [])
+  
+  console.log(countries[0] && countries[0].flags.svg);
+
   return (
     <div>
         <Head>
@@ -28,7 +48,9 @@ export default function Home({theme}) {
           </div>
         </div>
         <div className={styles.secondSection}>
-          <Card />
+          {countries.map((country) => {
+            return <Card theme={theme} country={country} key={country.name.official} />
+          })}
         </div>
     </div>
   )
