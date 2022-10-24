@@ -53,7 +53,7 @@ export default function Home({theme, country}) {
           {countries.filter(country => ((country.name.official).toLowerCase()).includes(searchField) && (country.region).toLowerCase().includes(selected))
           .map((country) => {
             return (
-              <Link href={{pathname: url, query: {countryName: (country.name.common).toLowerCase().replace(/ /g, '-')}}} key={country.name.common}>
+              <Link href={{pathname: url, query: {countryName: (country.name.common).toLowerCase()}}} key={country.name.common}>
                 <a className={styles.links} onClick={(e) => handleClick(e, country)}>
                   <Card theme={theme} country={country} key={country.name.common} />
                 </a>
