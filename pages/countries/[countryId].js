@@ -42,11 +42,11 @@ export default function Country({ country, theme }) {
                                         <span key={currency.name}>{currency.name}</span>
                                     )
                                 }) : 'No currency'}</h3>
-                                <h3 className={countryStyles.countryMainTextInfoItem}><span className={countryStyles.countryMainTextInfoBold}>Languages: </span>{Object.values(country.languages).map((language, index) => {
+                                <h3 className={countryStyles.countryMainTextInfoItem}><span className={countryStyles.countryMainTextInfoBold}>Languages: </span>{array.includes('languages') ? Object.values(country.languages).map((language, index) => {
                                     return (
                                         <span key={language}>{(index ? ', ' : '') + language}</span>
                                     )
-                                })}</h3>
+                                }) : 'No info available'}</h3>
                             </div>
                         </div>
                         <div className={countryStyles.countryMainTextBorder}>
@@ -69,7 +69,7 @@ export default function Country({ country, theme }) {
 }
 
 export async function getStaticProps({ params }) {
-    const result = await fetch (`https://restcountries.com/v3.1/name/${params.countryId.replace(/\-/g, ' ')}`);
+    const result = await fetch (`https://restcountries.com/v3.1/name/${params.countryId}`);
     const data = await result.json();
     return {
         props: {
@@ -83,7 +83,7 @@ export async function getStaticPaths() {
     const countries = await result.json();
     return {
         paths: countries.map(country => {
-            const countryId = country.name.common.toLowerCase().replace(/ /g, '-');
+            const countryId = country.name.common.toLowerCase();
             return {
                 params: {
                     countryId
