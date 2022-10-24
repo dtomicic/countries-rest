@@ -16,7 +16,12 @@
     margin-bottom: 70px;
     max-width: 138px;
     border-radius: 5px;
-    transition: ease-in-out .3s;
+    transition: ease-in-out .5s;
+}
+
+.countryBack:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 .countryBackDark {

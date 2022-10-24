@@ -1,14 +1,20 @@
 import countryStyles from '../../styles/Page.module.css'
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Country({ country, theme }) {
+    const array = Object.keys(country);
     return (
         <div className={countryStyles.country}>
-            <div className={`${countryStyles["countryBack"]} ${theme ? countryStyles["countryBackDark"] : countryStyles["countryBackLight"]}`}>
-                <AiOutlineArrowLeft />
-                <h3 className={countryStyles.countryBackText}>Back</h3>
-            </div>
+            <Link href='/'>
+                <a>
+                    <div className={`${countryStyles["countryBack"]} ${theme ? countryStyles["countryBackDark"] : countryStyles["countryBackLight"]}`}>
+                        <AiOutlineArrowLeft />
+                        <h3 className={countryStyles.countryBackText}>Back</h3>
+                    </div>
+                </a>
+            </Link>
             <div className={`${countryStyles["countryMain"]} ${theme ? countryStyles["countryMainDark"] : countryStyles["countryMainLight"]}`}>
                 <div className={countryStyles.countryMainImage}>
                     <Image src={country.flags.svg} width="100%" height="50%" layout="responsive" objectFit="cover" />
@@ -25,12 +31,12 @@ export default function Country({ country, theme }) {
                             <h3 className={countryStyles.countryMainTextInfoItem}><span className={countryStyles.countryMainTextInfoBold}>Capital: </span>{country.capital}</h3>
                         </div>
                         <div className={countryStyles.countryMainTextInfoSecond}>
-                            <h3 className={countryStyles.countryMainTextInfoItem}><span className={countryStyles.countryMainTextInfoBold}>Top Level Domain: </span>{country.tld}</h3>
-                            <h3 className={countryStyles.countryMainTextInfoItem}><span className={countryStyles.countryMainTextInfoBold}>Currencies: </span>{Object.values(country.currencies).map((currency) => {
+                            <h3 className={countryStyles.countryMainTextInfoItem}><span className={countryStyles.countryMainTextInfoBold}>Top Level Domain: </span>{array.includes('tld') ? country.tld : 'No TLD'}</h3>
+                            <h3 className={countryStyles.countryMainTextInfoItem}><span className={countryStyles.countryMainTextInfoBold}>Currencies: </span>{array.includes('currencies') ? Object.values(country.currencies).map((currency) => {
                                 return (
                                     <span key={currency.name}>{currency.name}</span>
                                 )
-                            })}</h3>
+                            }) : 'No currency'}</h3>
                             <h3 className={countryStyles.countryMainTextInfoItem}><span className={countryStyles.countryMainTextInfoBold}>Languages: </span>{Object.values(country.languages).map((language, index) => {
                                 return (
                                     <span key={language}>{(index ? ', ' : '') + language}</span>
@@ -41,13 +47,13 @@ export default function Country({ country, theme }) {
                     <div className={countryStyles.countryMainTextBorder}>
                         <h3 className={countryStyles.countryMainTextBorderHeader}>Border Countries: </h3>
                         <div className={countryStyles.countryMainTextBorderList}>
-                            {country.borders.map((country) => {
+                            {array.includes('borders') ? country.borders.map((country) => {
                                 return (
                                     <div className={`${countryStyles["countryMainTextBorderBox"]} ${theme ? countryStyles["countryMainTextBorderBoxDark"] : countryStyles["countryMainTextBorderBoxLight"]}`} key={country}>
                                         <h3 className={countryStyles.countryMainTextBorderBoxHeader}>{country}</h3>
                                     </div>
                                 )
-                            })}
+                            }) : `Country doesen't have any borders`}
                         </div>
                     </div>
                 </div>
