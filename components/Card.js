@@ -1,6 +1,5 @@
 import cardStyles from '../styles/Card.module.css';
 import Image from 'next/image'
-import image from '../public/images/de.svg'
 
 const Card = ({theme, country}) => {
   return (

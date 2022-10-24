@@ -4,26 +4,17 @@ import { SlMagnifier } from "react-icons/sl";
 import Card from '../components/Card';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import Link from 'next/link'
 
-export default function Home({theme}) {
-  const [countries, setCountries] = useState([])
+export default function Home({theme, country}) {
+  const [clicked, setClicked] = useState('');
+  const url = '/countries/[countryName]'
 
-  const callApi = async () => {
-    try {
-      const res = await fetch('https://restcountries.com/v3.1/all');
-      const data = await res.json();
-      setCountries(data);
-      console.log(data);
-    }catch (e) {
-      console.log(e);
-    }
+  const handleClick = (e, country) => {
+    setClicked((country.name.common).toLowerCase());
   }
 
-
-  useEffect(() => {
-    callApi();
-  }, [])
-  
+  console.log(clicked);
 
   return (
     <div>
@@ -49,10 +40,26 @@ export default function Home({theme}) {
           </div>
         </div>
         <div className={styles.secondSection}>
-          {countries.map((country) => {
-            return <Card theme={theme} country={country} key={country.name.official} />
+          {country.map((country) => {
+            return (
+              <Link href={{pathname: url, query: {countryName: (country.name.common).toLowerCase().replace(/ /g, '-')}}} key={country.name.common}>
+                <a className={styles.links} onClick={(e) => handleClick(e, country)}>
+                  <Card theme={theme} country={country} key={country.name.common} />
+                </a>
+              </Link>
+            )
           })}
         </div>
     </div>
   )
+}
+
+export async function getStaticProps({}) {
+  const result = await fetch (`https://restcountries.com/v3.1/all`);
+  const country = await result.json();
+  return {
+      props: {
+          country
+      }
+  }
 }
